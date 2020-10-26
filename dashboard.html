@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid19 Dashboard</title>
+    <link rel="stylesheet" href="./dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="container-fluid bg-light m-0 p-0">
+    <nav
+      class="navbar navbar-white bg-dark text-white d-flex justify-content-between mb-2"
+    >
+      <span class="navbar-brand mb-0 h1 font-weight-bold">Covid-19</span>
+      <a class="text-white btn btn-outline-white" href="patient_list.html"
+        >View Table</a
+      >
+    </nav>
+    <section class="contianer">
+      <form
+        onsubmit="return SubmitForm()"
+        class="col-md-8 m-auto bg-white p-3 my-2 shadow-lg border border-rounded rounded"
+      >
+        <h4>Patient Details</h4>
+        <div class="row justify-content-between">
+          <div class="form-group col-5">
+            <label for="fName">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fName"
+              placeholder="Your First Name"
+              required
+            />
+          </div>
+          <div class="form-group col-5">
+            <label for="lName">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lName"
+              placeholder="Your Last Name"
+              required
+            />
+          </div>
+        </div>
+        <div class="row justify-content-between">
+          <div class="form-group col-5">
+            <label for="dob">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" />
+          </div>
+          <div class="form-group col-5">
+            <label for="phone">Phone No</label>
+            <input
+              type="number"
+              class="form-control"
+              id="phone"
+              placeholder="Your Phone No"
+              required
+            />
+          </div>
+        </div>
+        <div class="pb-2" id="gender">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="male"
+              value="male"
+              checked
+            />
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              id="female"
+              value="female"
+            />
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+        </div>
+
+        <div class="mt-2 pt-2 border-black-50 border-top">
+          <h4>Case Records</h4>
+          <div class="row justify-content-between my-2 mx-0">
+            <select class="form-control col-5" id="case-situation" required>
+              <option value="">Case Situation</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="investigated">Investigated</option>
+              <option value="probable">Probable</option>
+              <option value="follow up">Follow Up</option>
+              <option value="fatal">Fatal</option>
+              <option value="amitted">Admitted</option>
+              <option value="dead">Dead</option>
+            </select>
+            <select class="form-control col-5" id="health-facility" required>
+              <option value="">Health Facility</option>
+              <option value="asaba specialist hospital">
+                Asaba Specialist Hospital
+              </option>
+              <option value="central hospital afuze">
+                Central Hospital Afuze
+              </option>
+              <option value="central hospital agbo">
+                Central Hospital Agbo
+              </option>
+              <option value="central hospital kwale">
+                Central Hospital Kwale
+              </option>
+              <option value="central hospital ole">Central Hospital Ole</option>
+              <option value="central hospital sepele">
+                Central Hospital Sepele
+              </option>
+              <option value="central hospital ugbelli">
+                Central Hospital Ugbelli
+              </option>
+              <option value="central hospital warri">
+                Central Hospital Warri
+              </option>
+            </select>
+          </div>
+          <div class="row justify-content-between my-2 mx-0">
+            <select class="form-control col-5" id="result-status" required>
+              <option value="">Result Status</option>
+              <option value="positive">Poitive</option>
+              <option value="negative">Negative</option>
+              <option value="pending">Pending</option>
+            </select>
+            <select class="form-control col-5" id="local-govn" required>
+              <option value="">Local Government</option>
+              <option value="aniocha north">Aniocha North</option>
+              <option value="aniocha south">Aniocha South</option>
+              <option value="bomdi">Bomadi</option>
+              <option value="ethiope east">Ethiope East</option>
+              <option value="ethiope west">Ethiope west</option>
+              <option value="ika north east">Ika North East</option>
+              <option value="ika south">Ika South</option>
+              <option value="isoko north">Isoko North</option>
+              <option value="isoko south">Isoko south</option>
+            </select>
+          </div>
+          <div class="row justify-content-between my-2 mx-0">
+            <select class="form-control col-5" id="age-range" required>
+              <option value="">Age Range</option>
+              <option value="0-10">0-10</option>
+              <option value="11-25">11-25</option>
+              <option value="26-45">26-45</option>
+              <option value="26-upward">46-upward</option>
+            </select>
+            <div class="form-group col-5 p-0">
+              <input
+                type="date"
+                class="form-control"
+                id="date"
+                placeholder="recorder date"
+              />
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary px-3 create_data">
+          Submit
+        </button>
+      </form>
+    </section>
+
+    <!-- bootstrap -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./dashboard.js"></script>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <script type="text/javascript">
+      $(document).ready(function () {
+        $(".create_data").click(function () {
+          console.log("button clicked");
+          var fname = document.getElementById("fName").value;
+          var lname = document.getElementById("lName").value;
+          var create_data = [];
+          create_data.push({
+            first_name: fname,
+            last_name: lname,
+          });
+
+          $.ajax({
+            url: "http://covid.calminfotech.com/post-api/create.php/",
+            type: "POST",
+            mode: "no-cors",
+            data: { create_data: create_data },
+            success: function (data) {
+              console.log("sending...");
+              if (data == "SUCCESS") {
+                console.log("success");
+              } else {
+                console.log("failure");
+              }
+            },
+          });
+          return false
+        });
+      });
+    </script> -->
+  </body>
+</html>
